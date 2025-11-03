@@ -417,7 +417,7 @@
         .project-image-scroll {
             width: 100%;
             height: 400px;
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            background: var(--bg-secondary);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1008,15 +1008,19 @@
                 </div>
             </div>
             <div class="project-card-scroll" data-project="2">
-                <div class="project-image-scroll">Project Image 2</div>
+                <div class="project-image-scroll">
+                    <img src="portfolio images/Argo Logo.jpg" alt="Argo Logo" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
                 <div class="project-info-scroll">
                     <h3>Vehicle Assembly Process Standardization and Quality Control Documentation</h3>
-                    <div class="project-date">Date: February 2024</div>
+                    <div class="project-date">Date: Sep.2025—Present</div>
                     <p>Created detailed work instructions to standardize assembly processes and incorporate recent engineering changes, reducing process variation. Established standardized testing protocols for quality assurance, including leak detection and operational validation procedures. Gained hands-on experience performing quality tests and refining documentation based on production feedback. This work improved manufacturing consistency and enabled better compliance with engineering specifications.</p>
                 </div>
             </div>
             <div class="project-card-scroll" data-project="3">
-                <div class="project-image-scroll">Project Image 3</div>
+                <div class="project-image-scroll">
+                    <img src="portfolio images/SJ3220.jpg" alt="SJ3220" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
                 <div class="project-info-scroll">
                     <h3>Manufacturing Defect Analysis and Root Cause Investigation</h3>
                     <div class="project-date">Date: April 2025</div>
@@ -1024,18 +1028,22 @@
                 </div>
             </div>
             <div class="project-card-scroll" data-project="4">
-                <div class="project-image-scroll">Project Image 4</div>
+                <div class="project-image-scroll">
+                    <img src="portfolio images/Linamar-Logo-Socials.png" alt="Linamar Logo" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
                 <div class="project-info-scroll">
-                    <h3>Soap Symposium</h3>
-                    <div class="project-date">Date: Oct. 2024—Dec. 2024</div>
-                    <p>Placeholder description for project 4. Detail the technologies used, challenges faced, and outcomes achieved. Highlight what makes this project unique.</p>
+                    <h3>Defect Tracking Optimization</h3>
+                    <div class="project-date">Apr. 2025—May 2025</div>
+                    <p>Coded a userform macro using VBA to be used by welders to eliminate the redundancy of hand-writing and then entering defect information into Excel.</p>
                 </div>
             </div>
             <div class="project-card-scroll" data-project="5">
-                <div class="project-image-scroll">Project Image 5</div>
+                <div class="project-image-scroll">
+                    <img src="portfolio images/Soap Symposium.jpg" alt="Soap Symposium" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
                 <div class="project-info-scroll">
-                    <h3>Project Title 5</h3>
-                    <div class="project-date">Date: May 2024</div>
+                    <h3>Soap Symposium</h3>
+                    <div class="project-date">Date: Oct. 2024—Dec. 2024</div>
                     <p>Placeholder description for project 5. Describe the impact, learning experiences, and technical depth of this project. Include any metrics or achievements.</p>
                 </div>
             </div>
@@ -1208,8 +1216,8 @@
             },
             2: {
                 title: "Vehicle Assembly Process Standardization and Quality Control Documentation",
-                date: "February 2024",
-                image: "", // Add image path here
+                date: "Sep. 2025—Present",
+                image: "C:\Users\nocec\Downloads\portfolio images\Argo Logo.jpg",
                 problem: `<p>Assembly processes lacked standardized documentation, leading to inconsistent manufacturing practices and difficulty incorporating engineering changes. Quality control procedures varied across shifts, resulting in process variation and potential compliance issues.</p>`,
                 solution: `<p>Created detailed work instructions to standardize assembly processes and established standardized testing protocols for quality assurance, including leak detection and operational validation procedures. Documented procedures were refined based on production feedback.</p>`,
                 results: `<p>This work improved manufacturing consistency and enabled better compliance with engineering specifications. The standardized documentation facilitated training and ensured consistent quality across all production shifts.</p>`
@@ -1217,23 +1225,23 @@
             3: {
                 title: "Manufacturing Defect Analysis and Root Cause Investigation",
                 date: "April 2025",
-                image: "", // Add image path here
+                image: "C:\Users\nocec\Downloads\portfolio images\SJ3220.jpg", // Add image path here
                 problem: `<p>A sudden increase in welding defects on production components was affecting quality metrics and production output. The root cause was unclear, and production teams needed a systematic approach to identify and resolve the issue.</p>`,
                 solution: `<p>Investigated the defect trend by analyzing quality data patterns and conducting systematic root cause analysis. Collaborated directly with production operators to understand process variations and identified the underlying cause through data analysis and operator feedback.</p>`,
                 results: `<p>Successfully eliminated defect occurrence over multiple production days. The investigation demonstrated the effectiveness of data-driven problem-solving and clear communication across manufacturing operations, establishing a template for future defect resolution.</p>`
             },
             4: {
-                title: "Soap Symposium",
-                date: "Oct. 2024—Dec. 2024",
-                image: "", // Add image path here
+                title: "Defect Tracking Optimization",
+                date: "Apr. 2025—May 2025",
+                image: "C:\Users\nocec\Downloads\portfolio images\Linamar-Logo-Socials.png", // Add image path here
                 problem: `<p>Placeholder text describing the problem that this project addresses. Explain the challenges, constraints, and why this problem needed to be solved.</p>`,
                 solution: `<p>Placeholder text describing the solution approach, methodology, and implementation. Detail the technical choices, design decisions, and how the solution addresses the problem.</p>`,
                 results: `<p>Placeholder text describing the outcomes, achievements, and impact of the project. Include any metrics, improvements, or lessons learned.</p>`
             },
             5: {
-                title: "Project Title 5",
-                date: "May 2024",
-                image: "", // Add image path here
+                title: "Soap Symposium",
+                date: "Oct. 2024—Dec. 2024",
+                image: "C:\Users\nocec\Downloads\portfolio images\Soap Symposium.jpg", // Add image path here
                 problem: `<p>Placeholder text describing the problem that this project addresses. Explain the challenges, constraints, and why this problem needed to be solved.</p>`,
                 solution: `<p>Placeholder text describing the solution approach, methodology, and implementation. Detail the technical choices, design decisions, and how the solution addresses the problem.</p>`,
                 results: `<p>Placeholder text describing the outcomes, achievements, and impact of the project. Include any metrics, improvements, or lessons learned.</p>`
