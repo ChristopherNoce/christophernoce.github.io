@@ -3,1289 +3,1557 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Christopher Noce - Portfolio</title>
+    <title>Christopher Noce - Chemical Engineering Student</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Light mode colors - Modern Teal/Cyan theme */
-            --bg-primary: #f8f9fa;
+            /* Light mode colors */
+            --bg-primary: #fafafa;
             --bg-secondary: #ffffff;
-            --text-primary: #333333;
-            --text-secondary: #555555;
-            --text-tertiary: #666666;
-            --text-meta: #888888;
-            --accent-primary: #2a2a2a;
-            --accent-secondary: #2a2a2a;
-            --accent-gradient: linear-gradient(135deg, #2a2a2a 0%, #2a2a2a 100%);
-            --accent-shadow: rgba(42, 42, 42, 0.4);
-            --nav-bg: #ffffff;
-            --card-shadow: rgba(0,0,0,0.08);
-            --card-hover-shadow: rgba(0,0,0,0.12);
-            --border-color: #f0f0f0;
-            --footer-bg: #333333;
-            --nav-shadow: rgba(0,0,0,0.05);
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --text-tertiary: #6a6a6a;
+            --text-meta: #8a8a8a;
+            --accent-primary: #0066cc;
+            --accent-secondary: #0052a3;
+            --accent-gradient: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
+            --accent-shadow: rgba(0, 102, 204, 0.25);
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --card-shadow: rgba(0, 0, 0, 0.06);
+            --card-hover-shadow: rgba(0, 102, 204, 0.15);
+            --border-color: #e5e5e5;
+            --tag-bg: #f0f7ff;
+            --tag-text: #0066cc;
+            --skeleton-bg: #f0f0f0;
+            --skeleton-highlight: #f8f8f8;
         }
 
         [data-theme="dark"] {
-            /* Dark mode colors - Purple theme */
-            --bg-primary: #0a0a0f;
-            --bg-secondary: #1a1a2e;
-            --text-primary: #ffffff;
-            --text-secondary: #e0e0e0;
-            --text-tertiary: #d0d0d0;
-            --text-meta: #b0b0b0;
-            --accent-primary: #2a2a2a;
-            --accent-secondary: #2a2a2a;
-            --accent-gradient: linear-gradient(135deg, #2a2a2a 0%, #2a2a2a 100%);
-            --accent-shadow: rgba(42, 42, 42, 0.5);
-            --nav-bg: #1a1a2e;
-            --card-shadow: rgba(0,0,0,0.3);
-            --card-hover-shadow: rgba(157, 78, 221, 0.2);
-            --border-color: #2a2a3e;
-            --footer-bg: #0a0a0f;
-            --nav-shadow: rgba(0,0,0,0.5);
-            --heading-accent: #00d9ff;
-        }
-
-        /* Dark mode: Make LinkedIn, GitHub, and Resume icons white */
-        [data-theme="dark"] .social-icons a:not(.resume-button) {
-            color: #ffffff;
-        }
-
-        [data-theme="dark"] .social-icons a:not(.resume-button):hover {
-            color: #ffffff;
-        }
-
-        /* Dark mode: Resume button - white background, but icon and text same as background */
-        [data-theme="dark"] .resume-button {
-            background: #ffffff;
-            color: var(--bg-primary);
-        }
-
-        [data-theme="dark"] .resume-button:hover {
-            background: #ffffff;
-        }
-
-        [data-theme="dark"] .resume-button svg {
-            fill: var(--bg-primary);
-        }
-
-        [data-theme="dark"] .resume-button .resume-text {
-            color: var(--bg-primary);
-        }
-
-
-        /* Dark mode: Education text white (except headings which use bright accent) */
-        [data-theme="dark"] #education .card .meta,
-        [data-theme="dark"] #education .card p,
-        [data-theme="dark"] #education .card ul,
-        [data-theme="dark"] #education .card li {
-            color: #ffffff;
-        }
-
-        /* Dark mode: Bright accent color for education card h3 headings */
-        [data-theme="dark"] #education .card h3 {
-            color: var(--heading-accent);
+            /* Dark mode colors */
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --text-primary: #f0f0f0;
+            --text-secondary: #c9d1d9;
+            --text-tertiary: #8b949e;
+            --text-meta: #6e7681;
+            --accent-primary: #58a6ff;
+            --accent-secondary: #79c0ff;
+            --accent-gradient: linear-gradient(135deg, #58a6ff 0%, #79c0ff 100%);
+            --accent-shadow: rgba(88, 166, 255, 0.35);
+            --nav-bg: rgba(22, 27, 34, 0.95);
+            --card-shadow: rgba(0, 0, 0, 0.4);
+            --card-hover-shadow: rgba(88, 166, 255, 0.25);
+            --border-color: #30363d;
+            --tag-bg: #1c2128;
+            --tag-text: #58a6ff;
+            --skeleton-bg: #21262d;
+            --skeleton-highlight: #30363d;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: var(--text-primary);
             background: var(--bg-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
+        /* Navigation */
         nav {
             background: var(--nav-bg);
-            padding: 1.5rem 2rem;
-            box-shadow: none;
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
             position: sticky;
             top: 0;
-            z-index: 1001;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        nav ul {
+        .nav-links {
             list-style: none;
             display: flex;
-            justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-            flex: 1;
+            gap: 2.5rem;
+            align-items: center;
         }
 
-        nav a {
+        .nav-links a {
             text-decoration: none;
             color: var(--text-primary);
             font-weight: 500;
-            font-size: 1.1rem;
-            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.95rem;
             transition: color 0.3s ease;
-            cursor: pointer;
             position: relative;
+            cursor: pointer;
         }
 
-        nav a::after {
+        .nav-links a::after {
             content: '';
             position: absolute;
-            width: 100%;
+            width: 0;
             height: 2px;
             bottom: -4px;
             left: 0;
-            background-color: var(--accent-primary);
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            background: var(--accent-primary);
+            transition: width 0.3s ease;
         }
 
-        nav a:hover {
+        .nav-links a:hover {
             color: var(--accent-primary);
         }
 
-        /* Dark mode: Bright accent color for nav hover */
-        [data-theme="dark"] nav a:hover {
-            color: var(--heading-accent);
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
-        nav a:hover::after {
-            opacity: 1;
+        /* Mobile menu toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
         }
 
-        /* Dark mode: Bright accent color for nav hover underline */
-        [data-theme="dark"] nav a:hover::after {
-            background-color: var(--heading-accent);
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        /* Theme toggle */
         .theme-toggle {
             background: var(--bg-secondary);
             border: 2px solid var(--accent-primary);
-            color: var(--accent-primary);
-            width: 50px;
-            height: 50px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            font-size: 1.5rem;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 10px var(--accent-shadow), 0 0 20px var(--accent-shadow);
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 8px var(--card-shadow);
         }
 
         .theme-toggle:hover {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 4px 20px var(--accent-shadow), 0 0 30px var(--accent-shadow);
-            border-color: var(--accent-secondary);
-        }
-
-        .theme-toggle:active {
-            transform: scale(0.95);
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px var(--accent-shadow);
         }
 
         .theme-toggle .icon {
-            position: absolute;
-            transition: opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease;
-            filter: drop-shadow(0 0 5px var(--accent-shadow));
+            font-size: 1.2rem;
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
         .theme-toggle .sun {
+            position: absolute;
             opacity: 1;
-            transform: rotate(0deg) scale(1);
         }
 
         .theme-toggle .moon {
+            position: absolute;
             opacity: 0;
-            transform: rotate(90deg) scale(0);
-        }
-
-        [data-theme="dark"] .theme-toggle {
-            background: var(--bg-secondary);
-            border-color: var(--accent-primary);
         }
 
         [data-theme="dark"] .theme-toggle .sun {
             opacity: 0;
-            transform: rotate(-90deg) scale(0);
         }
 
         [data-theme="dark"] .theme-toggle .moon {
             opacity: 1;
-            transform: rotate(0deg) scale(1);
         }
 
+        /* Sections */
         .section {
-            display: block;
             max-width: 1200px;
             margin: 0 auto;
             padding: 4rem 2rem;
             min-height: calc(100vh - 200px);
         }
 
-        #about {
-            padding-bottom: 0.6rem;
-        }
-
-        #experience {
-            padding-top: 0.6rem;
-        }
-
         .section:target {
-            scroll-margin-top: 100px;
+            scroll-margin-top: 80px;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
+        /* Hero Section */
         .hero {
-            text-align: left;
-            padding: 2rem 0 0 0;
-            display: flex;
-            gap: 3rem;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 4rem;
             align-items: center;
+            padding: 2rem 0;
         }
 
         .hero-content {
-            flex: 1;
+            animation: fadeInUp 0.8s ease-out;
         }
 
-        .hero-image {
-            flex-shrink: 0;
-            width: 300px;
-            height: 300px;
-        }
-
-        .hero-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            box-shadow: 0 4px 20px var(--card-shadow);
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero h1 {
-            font-size: 2rem;
+            font-size: 3rem;
+            font-weight: 700;
             margin-bottom: 0.5rem;
-            font-family: 'Rajdhani', sans-serif;
-            font-weight: 600;
-            color: var(--text-primary);
-            transition: background 0.3s ease;
-        }
-
-        /* Dark mode: Bright accent color for hero h1 heading */
-        [data-theme="dark"] .hero h1 {
-            color: var(--heading-accent);
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
         }
 
         .hero .student-title {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
             font-weight: 400;
         }
 
-        .typing-cursor {
-            display: inline-block;
-            width: 3px;
-            height: 1em;
-            background: var(--accent-primary);
-            margin-left: 2px;
-            animation: blink 1s infinite;
-            vertical-align: text-bottom;
-        }
-
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-
-        .hero .subtitle {
-            font-size: 1.5rem;
-            color: var(--text-tertiary);
+        .hero-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
             margin-bottom: 2rem;
         }
 
-        .hero-description {
-            max-width: 700px;
-            margin: 0 0 2rem 0;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-secondary);
-        }
-
-        .social-icons {
+        .cta-container {
             display: flex;
-            gap: 1.5rem;
-            margin: 2rem 0 0.45rem 0;
+            gap: 1rem;
+            flex-wrap: wrap;
             align-items: center;
+            margin-bottom: 2rem;
         }
 
-        .social-icons a:not(.resume-button) {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 48px;
-            height: 48px;
-            color: var(--accent-primary);
-            text-decoration: none;
-            transition: transform 0.3s ease, color 0.3s ease;
-            border-radius: 8px;
-            margin-left: 0.5rem;
-        }
-
-        .social-icons a:not(.resume-button):hover {
-            transform: scale(1.15);
-            color: var(--accent-secondary);
-        }
-
-        .social-icons a:not(.resume-button) svg {
-            width: 100%;
-            height: 100%;
-            fill: currentColor;
-        }
-
-        .social-icons .resume-icon {
-            width: 48px;
-            height: 48px;
-        }
-
-        .resume-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0 1.25rem 0 0.75rem;
-            height: 48px;
-            background: #2a2a2a;
-            color: white;
-            text-decoration: none;
-            border-radius: 24px;
-            font-weight: 500;
-            font-size: 1rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 2px 8px var(--card-shadow);
-            flex-shrink: 0;
-        }
-
-        .resume-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px var(--card-hover-shadow);
-        }
-
-        .resume-button svg {
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
-            flex-shrink: 0;
-        }
-
-        .resume-button .resume-text {
-            color: currentColor;
-            white-space: nowrap;
-        }
-
-        .projects-container {
-            margin-top: 2rem;
-            position: relative;
-        }
-
-        .project-card-scroll {
-            background: var(--bg-secondary);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px var(--card-shadow);
-            margin-bottom: 8vh;
-            opacity: 0;
-            transform: translateY(100px);
-            transition: opacity 1s ease-out, transform 1s ease-out, box-shadow 0.3s ease, transform 0.3s ease;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-            cursor: pointer;
-        }
-
-        .project-card-scroll:hover {
-            box-shadow: 0 5px 20px var(--card-hover-shadow);
-            transform: translateY(0) scale(1.02);
-        }
-
-        .project-card-scroll.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .project-card-scroll:last-child {
-            margin-bottom: 4rem;
-        }
-
-        .project-image-scroll {
-            width: 100%;
-            height: 400px;
-            background: var(--bg-secondary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: 500;
-            border-radius: 12px 12px 0 0;
-        }
-
-        .project-info-scroll {
-            padding: 2rem;
-        }
-
-        .project-info-scroll h3 {
-            color: var(--accent-primary);
-            margin-bottom: 0.5rem;
-            font-size: 1.8rem;
-            font-family: 'Rajdhani', sans-serif;
-            font-weight: 600;
-        }
-
-        /* Dark mode: Bright accent color for project h3 headings */
-        [data-theme="dark"] .project-info-scroll h3 {
-            color: var(--heading-accent);
-        }
-
-        .project-info-scroll .project-date {
-            color: var(--text-meta);
-            font-size: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .project-info-scroll p {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            font-size: 1.1rem;
-        }
-
-        .experience-list {
-            display: grid;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .experience-item {
-            background: var(--bg-secondary);
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px var(--card-shadow);
-            border-left: 4px solid var(--accent-primary);
-        }
-
-        /* Dark mode: Bright accent color for experience item h3 headings */
-        [data-theme="dark"] .experience-item h3 {
-            color: var(--heading-accent);
-        }
-
-
-        .project-detail {
-            display: none;
-        }
-
-        /* Project Detail Page Styles */
-        .project-detail-page {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--bg-primary);
-            z-index: 1000;
-            overflow-y: auto;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-            pointer-events: none;
-        }
-
-        .project-detail-page.active {
-            display: block;
-            pointer-events: auto;
-        }
-
-        .project-detail-content {
-            position: relative;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 3rem 2rem;
-            min-height: calc(100vh);
-        }
-
-        .project-back-button {
-            position: fixed;
-            top: 2rem;
-            left: 2rem;
+        .cta-primary {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            background: var(--accent-primary);
-            color: var(--bg-primary);
+            padding: 0.875rem 1.75rem;
+            background: var(--accent-gradient);
+            color: white;
             text-decoration: none;
-            border-radius: 50px;
-            font-weight: 500;
+            border-radius: 8px;
+            font-weight: 600;
             font-size: 1rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-            box-shadow: 0 2px 10px var(--accent-shadow);
-            font-family: 'Rajdhani', sans-serif;
-            border: none;
-            cursor: pointer;
-            z-index: 10;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px var(--accent-shadow);
         }
 
-        .project-back-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px var(--accent-shadow);
-        }
-
-        .project-back-button svg {
-            width: 18px;
-            height: 18px;
-            fill: currentColor;
-        }
-
-        .project-back-button .back-text {
-            color: var(--bg-primary);
-        }
-
-        /* Dark mode: LinkedIn logo color (white) for back button background */
-        [data-theme="dark"] .project-back-button {
-            background: #ffffff;
-        }
-
-        [data-theme="dark"] .project-back-button:hover {
-            background: #ffffff;
-            opacity: 0.9;
-        }
-
-        [data-theme="dark"] .project-back-button .back-text {
-            color: var(--bg-primary);
-        }
-
-        .detail-header {
-            margin-bottom: 3rem;
-            margin-top: 4rem;
-        }
-
-        .detail-header h1 {
-            font-size: 2.5rem;
-            color: var(--accent-primary);
-            margin-bottom: 0.5rem;
-            font-family: 'Rajdhani', sans-serif;
-            font-weight: 600;
-        }
-
-        [data-theme="dark"] .detail-header h1 {
-            color: var(--heading-accent);
-        }
-
-        .detail-header .meta {
-            color: var(--text-meta);
-            font-size: 1.1rem;
-        }
-
-        .detail-image-container {
-            width: 100%;
-            margin-bottom: 3rem;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px var(--card-shadow);
-            min-height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            color: white;
-            font-size: 1.5rem;
-            font-weight: 500;
-        }
-
-        .detail-image-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: cover;
-        }
-
-        .detail-image-container.has-image {
-            min-height: auto;
-            background: none;
-            color: inherit;
-            font-size: inherit;
-            font-weight: inherit;
-        }
-
-        .detail-section {
-            margin-bottom: 3rem;
-        }
-
-        .detail-section h3 {
-            font-size: 1.8rem;
-            color: var(--accent-primary);
-            margin-bottom: 1.5rem;
-            font-family: 'Rajdhani', sans-serif;
-            font-weight: 600;
-        }
-
-        [data-theme="dark"] .detail-section h3 {
-            color: var(--heading-accent);
-        }
-
-        .detail-section p {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .detail-section-image {
-            width: 100%;
-            max-width: 800px;
-            margin: 1.5rem auto;
-            display: block;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px var(--card-shadow);
-        }
-
-        .project-detail-header {
-            margin-bottom: 3rem;
-        }
-
-        .project-detail-image {
-            width: 100%;
-            max-height: 500px;
-            min-height: 400px;
-            border-radius: 12px;
-            margin-bottom: 3rem;
-            box-shadow: 0 4px 20px var(--card-shadow);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: 500;
-        }
-
-        .project-detail-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .project-detail-content h3 {
-            font-size: 1.8rem;
-            color: var(--accent-primary);
-            margin-bottom: 1rem;
-            margin-top: 2.5rem;
-            font-family: 'Rajdhani', sans-serif;
-            font-weight: 600;
-        }
-
-        /* Dark mode: Bright accent color for project detail h3 headings */
-        [data-theme="dark"] .project-detail-content h3 {
-            color: var(--heading-accent);
-        }
-
-        .project-detail-content p {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-        }
-
-        .back-button {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            background: var(--accent-gradient);
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            font-weight: 500;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 2px 10px var(--accent-shadow);
-        }
-
-        .back-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px var(--accent-shadow);
-        }
-
-        .resume-btn {
-            display: inline-block;
-            margin-top: 2rem;
-            padding: 1rem 2.5rem;
-            background: var(--accent-gradient);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-            box-shadow: 0 4px 15px var(--accent-shadow);
-        }
-
-        .resume-btn:hover {
+        .cta-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px var(--accent-shadow);
         }
 
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            text-align: left;
-            color: var(--text-primary);
-            font-family: 'Rajdhani', sans-serif;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-        }
-
-        /* Dark mode: Bright accent color for h2 headings */
-        [data-theme="dark"] h2 {
-            color: var(--heading-accent);
-        }
-
-        .card {
-            background: var(--bg-secondary);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px var(--card-shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px var(--card-hover-shadow);
-        }
-
-        .card h3 {
-            color: var(--accent-primary);
-            margin-bottom: 0.5rem;
-            font-size: 1.5rem;
-            font-family: 'Rajdhani', sans-serif;
-            font-weight: 600;
-            letter-spacing: 0.02em;
-        }
-
-        /* Dark mode: Bright accent color for card h3 headings */
-        [data-theme="dark"] .card h3 {
-            color: var(--heading-accent);
-        }
-
-        .card .meta {
-            color: var(--text-meta);
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-        }
-
-        .card p {
-            color: var(--text-secondary);
-            line-height: 1.8;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .skill-category {
-            background: var(--bg-secondary);
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px var(--card-shadow);
-            transition: box-shadow 0.3s ease;
-        }
-
-        .skill-category h4 {
-            color: var(--accent-primary);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-            font-family: 'Rajdhani', sans-serif;
-            font-weight: 600;
-            letter-spacing: 0.02em;
-        }
-
-        /* Dark mode: Bright accent color for h4 headings */
-        [data-theme="dark"] .skill-category h4 {
-            color: var(--heading-accent);
-        }
-
-        .skill-category ul {
-            list-style: none;
-        }
-
-        .skill-category li {
-            padding: 0.5rem 0;
-            color: var(--text-secondary);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .skill-category li:last-child {
-            border-bottom: none;
-        }
-
-        footer {
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            text-align: center;
-            padding: 2rem 1rem;
-            margin-top: 4rem;
-            transition: background-color 0.3s ease;
-        }
-
-        .social-links {
-            margin-top: 0;
-            display: flex;
-            justify-content: center;
+        .cta-secondary {
+            display: inline-flex;
             align-items: center;
-            gap: 2rem;
+            gap: 0.5rem;
+            padding: 0.875rem 1.75rem;
+            background: transparent;
+            color: var(--accent-primary);
+            text-decoration: none;
+            border-radius: 8px;
+            border: 2px solid var(--accent-primary);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
         }
 
-        .social-links a {
-            color: var(--text-primary);
-            text-decoration: none;
-            transition: transform 0.3s ease, color 0.3s ease;
-            display: inline-block;
+        .cta-secondary:hover {
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        /* Social Icons */
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             width: 40px;
             height: 40px;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            border-radius: 8px;
         }
 
-        .social-links a svg {
-            width: 100%;
-            height: 100%;
+        .social-icons a:hover {
+            color: var(--accent-primary);
+            transform: translateY(-3px);
+        }
+
+        .social-icons svg {
+            width: 24px;
+            height: 24px;
             fill: currentColor;
         }
 
-        .social-links a:hover {
-            color: var(--accent-primary);
-            transform: scale(1.2) rotate(5deg);
+        /* Hero Image */
+        .hero-image {
+            position: relative;
+            animation: fadeIn 1s ease-out 0.3s backwards;
         }
 
-        @media (max-width: 768px) {
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px var(--card-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Section Headings */
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--text-primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-gradient);
+            border-radius: 2px;
+        }
+
+        /* Projects Section */
+        .projects-container {
+            display: grid;
+            gap: 3rem;
+        }
+
+        .project-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px var(--card-shadow);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .project-card.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px var(--card-hover-shadow);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image.loading {
+            background: var(--skeleton-bg);
+            animation: skeleton-loading 1.5s ease-in-out infinite;
+        }
+
+        @keyframes skeleton-loading {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-image-placeholder {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .project-info {
+            padding: 2rem;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-info h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .project-date {
+            color: var(--text-meta);
+            font-size: 0.9rem;
+            font-family: 'Space Mono', monospace;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            padding: 0.25rem 0.75rem;
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            font-family: 'Space Mono', monospace;
+        }
+
+        .project-summary {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-results {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .result-metric {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .result-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            font-family: 'Space Mono', monospace;
+        }
+
+        .result-label {
+            font-size: 0.9rem;
+            color: var(--text-tertiary);
+            margin-top: 0.25rem;
+        }
+
+        /* Experience Section */
+        .experience-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .experience-item {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px var(--card-shadow);
+            border-left: 4px solid var(--accent-primary);
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 4px 20px var(--card-hover-shadow);
+        }
+
+        .experience-item h3 {
+            color: var(--text-primary);
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item .company {
+            color: var(--accent-primary);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .experience-item .meta {
+            color: var(--text-meta);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-family: 'Space Mono', monospace;
+        }
+
+        .experience-item p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Education Section */
+        .education-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .education-card {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px var(--card-shadow);
+            transition: all 0.3s ease;
+        }
+
+        .education-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 24px var(--card-hover-shadow);
+        }
+
+        .education-card h3 {
+            color: var(--text-primary);
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card .meta {
+            color: var(--text-meta);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-family: 'Space Mono', monospace;
+        }
+
+        .education-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .education-card ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .education-card li {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+            font-weight: 700;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            border-radius: 50%;
+            background: var(--bg-primary);
+        }
+
+        .footer-social a:hover {
+            color: var(--accent-primary);
+            background: var(--tag-bg);
+            transform: translateY(-3px);
+        }
+
+        .footer-social svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .footer-text {
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 968px) {
             .hero {
-                flex-direction: column-reverse;
+                grid-template-columns: 1fr;
                 gap: 2rem;
             }
 
+            .hero-content {
+                order: 2;
+            }
+
             .hero-image {
-                width: 200px;
-                height: 200px;
+                order: 1;
+                max-width: 250px;
+                margin: 0 auto;
             }
 
             .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero .subtitle {
-                font-size: 1.2rem;
-            }
-
-            nav {
-                padding: 1rem;
-                flex-wrap: wrap;
-            }
-
-            nav ul {
-                gap: 1.5rem;
-                order: 2;
-                width: 100%;
-                justify-content: center;
-            }
-
-            .theme-toggle {
-                order: 1;
-                width: 45px;
-                height: 45px;
-                font-size: 1.3rem;
-                align-self: flex-start;
-                margin-left: auto;
+                font-size: 2.25rem;
             }
 
             h2 {
                 font-size: 2rem;
             }
 
-            .project-back-button {
-                top: 1rem;
-                left: 1rem;
-                padding: 0.6rem 1.2rem;
-                font-size: 0.9rem;
+            .section {
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-wrap: wrap;
             }
 
-            .project-detail-content {
-                padding: 2rem 1rem;
+            .mobile-menu-toggle {
+                display: block;
+                order: 3;
             }
 
-            .detail-header {
-                margin-top: 3rem;
+            .nav-links {
+                display: none;
+                width: 100%;
+                order: 4;
+                flex-direction: column;
+                gap: 0;
+                margin-top: 1rem;
+                padding-top: 1rem;
+                border-top: 1px solid var(--border-color);
             }
 
-            .detail-header h1 {
-                font-size: 2rem;
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+                padding: 0.75rem 0;
+            }
+
+            .theme-toggle {
+                order: 2;
+            }
+
+            .cta-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .cta-primary,
+            .cta-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .project-results {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .result-metric {
+                min-width: auto;
+            }
+        }
+
+        /* Project Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            max-width: 900px;
+            max-height: 85vh;
+            width: 90%;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-header {
+            position: sticky;
+            top: 0;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-close {
+            background: var(--bg-primary);
+            border: 2px solid var(--border-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .modal-close:hover {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        .modal-meta {
+            color: var(--text-meta);
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+            font-family: 'Space Mono', monospace;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 350px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        }
+
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .modal-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .modal-section h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .modal-section h3::before {
+            content: '';
+            width: 4px;
+            height: 1.5rem;
+            background: var(--accent-gradient);
+            border-radius: 2px;
+        }
+
+        .modal-section p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-section ul {
+            list-style: none;
+            margin-left: 0;
+            color: var(--text-secondary);
+        }
+
+        .modal-section li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.75rem;
+            line-height: 1.7;
+        }
+
+        .modal-section li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* Scrollbar styling for modal */
+        .modal-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .modal-content::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+
+        .modal-content::-webkit-scrollbar-thumb {
+            background: var(--accent-primary);
+            border-radius: 4px;
+        }
+
+        .modal-content::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-secondary);
+        }
+
+        /* Project card cursor pointer */
+        .project-card {
+            cursor: pointer;
+        }
+
+        /* Print styles */
+        @media print {
+            nav,
+            .theme-toggle,
+            footer,
+            .modal-overlay {
+                display: none;
+            }
+
+            .section {
+                min-height: auto;
+                page-break-inside: avoid;
+            }
+
+            .project-card,
+            .experience-item,
+            .education-card {
+                page-break-inside: avoid;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 95%;
+                max-height: 90vh;
+                border-radius: 16px;
+            }
+
+            .modal-header {
+                padding: 1rem 1.5rem;
+            }
+
+            .modal-body {
+                padding: 1.5rem;
+            }
+
+            .modal-title {
+                font-size: 1.5rem;
+            }
+
+            .modal-image {
+                height: 250px;
+            }
+
+            .modal-section h3 {
+                font-size: 1.25rem;
             }
         }
     </style>
 </head>
 <body>
     <nav>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#education">Education</a></li>
-        </ul>
-        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
-            <span class="icon sun">☀️</span>
-            <span class="icon moon">🌙</span>
-        </button>
+        <div class="nav-container">
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+            </ul>
+            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+                <span class="icon sun">☀️</span>
+                <span class="icon moon">🌙</span>
+            </button>
+        </div>
     </nav>
 
-    <!-- ABOUT SECTION (HOME) -->
-    <!-- ABOUT SECTION (HOME) -->
-    <div id="about" class="section">
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section">
         <div class="hero">
             <div class="hero-content">
-                <h1 id="typing-name">Hi, I'm Christopher<span class="typing-cursor"></span></h1>
+                <h1>Hi, I'm Christopher</h1>
                 <p class="student-title">Chemical Engineering Student at the University of Waterloo</p>
                 <div class="hero-description">
                     <p>
-I'm a Chemical Engineering student at the University of Waterloo with hands-on experience in quality engineering, process optimization, and data-driven engineering tools.
-I'm particularly interested in solving real-world production problems at the intersection of process reliability, throughput, and engineering judgment. Don't hesitate to reach out, I'm always up for a chat!                    
+                        I'm a Chemical Engineering student with hands-on experience in quality engineering, 
+                        process optimization, and data-driven problem solving. I specialize in solving real-world 
+                        production challenges at the intersection of process reliability, throughput optimization, 
+                        and engineering judgment.
                     </p>
                 </div>
-                <div class="social-icons">
-                    <a href="images/Christopher_Noce_Resume.pdf" target="_blank" title="Resume" class="resume-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                <div class="cta-container">
+                    <a href="#projects" class="cta-primary">
+                        View My Work
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 1L8 15M8 15L15 8M8 15L1 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
-                        <span class="resume-text">Resume</span>
                     </a>
-                    <a href="https://linkedin.com/in/christophernoce" target="_blank" title="LinkedIn">
+                    <a href="https://linkedin.com/in/christophernoce" target="_blank" class="cta-secondary">
+                        Let's Connect
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14 2L7 9M14 2L10 14L7 9M14 2L2 6L7 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="social-icons">
+                    <a href="https://linkedin.com/in/christophernoce" target="_blank" title="LinkedIn" aria-label="LinkedIn">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                         </svg>
                     </a>
-                    <a href="https://github.com/ChristopherNoce" target="_blank" title="GitHub">
+                    <a href="https://github.com/ChristopherNoce" target="_blank" title="GitHub" aria-label="GitHub">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="images/Christopher_Noce_Resume.pdf" target="_blank" title="Resume" aria-label="Resume">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
                         </svg>
                     </a>
                 </div>
             </div>
             <div class="hero-image">
-                <img src="images/headshot.jpg" alt="Christopher Noce">
+                <img src="images/headshot.jpg" alt="Christopher Noce" loading="lazy">
             </div>
         </div>
-    </div>
-<!-- PROJECTS SECTION -->
-<div id="projects" class="section">
-    <h2>Projects</h2>
-    <div class="projects-container">
+    </section>
 
-        <!-- Project 1 -->
-        <div class="project-card-scroll" data-project="1">
-            <div class="project-image-scroll">
-                <img src="images/Cure Profiles Initial vs Optimized.png" alt="Data Logger" style="width: 100%; height: 100%; object-fit: contain;">
-            </div>
-            <div class="project-info-scroll">
-                <h3>Paint Line Thermal Process Optimization</h3>
-                <div class="project-date">Ontario Drive &amp; Gear · Sep. 2025 – Dec. 2025</div>
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="section">
+        <h2>Featured Projects</h2>
+        <div class="projects-container">
 
-        <p><strong>Problem</strong></p>
-        <ul>
-            <li>Powder coat cure performance on large chassis assemblies was inconsistent due to non-uniform heating across parts with varying thermal mass.</li>
-            <li>Resulted in repeated out-of-spec conditions and constrained oven throughput.</li>
-        </ul>
+            <!-- Project 1 -->
+            <article class="project-card" data-project="1">
+                <div class="project-image loading">
+                    <img src="images/Cure Profiles Initial vs Optimized.png" alt="Paint Line Thermal Process Optimization" loading="lazy" onload="this.parentElement.classList.remove('loading')">
+                </div>
+                <div class="project-info">
+                    <div class="project-header">
+                        <div>
+                            <h3>Paint Line Thermal Process Optimization</h3>
+                            <p class="project-date">Sep 2025 – Dec 2025</p>
+                        </div>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">Process Engineering</span>
+                        <span class="tag">Data Analysis</span>
+                        <span class="tag">Manufacturing</span>
+                    </div>
+                    <p class="project-summary">
+                        Redesigned powder coat cure process for large chassis assemblies through thermal profiling 
+                        and component classification, transforming an inconsistent process into a data-driven, 
+                        repeatable system.
+                    </p>
+                    <div class="project-results">
+                        <div class="result-metric">
+                            <div class="result-value">0% → 80%</div>
+                            <div class="result-label">Cure Compliance</div>
+                        </div>
+                        <div class="result-metric">
+                            <div class="result-value">21 min</div>
+                            <div class="result-label">Cycle Time Reduction</div>
+                        </div>
+                        <div class="result-metric">
+                            <div class="result-value">20+</div>
+                            <div class="result-label">Validation Trials</div>
+                        </div>
+                    </div>
+                </div>
+            </article>
 
-        <p><strong>Approach</strong></p>
-        <ul>
-            <li>Instrumented representative chassis components using multi-point dataloggers and conducted 20+ validation trials to characterize thermal response.</li>
-            <li>Classified components into thermal families based on empirically observed heat-up behavior.</li>
-            <li>Redesigned oven load configurations to better align cure strategy with part thermal characteristics.</li>
-        </ul>
+            <!-- Project 2 -->
+            <article class="project-card" data-project="2">
+                <div class="project-image loading">
+                    <img src="images/Argo Logo.jpg" alt="Vehicle Assembly Standardization" loading="lazy" onload="this.parentElement.classList.remove('loading')">
+                </div>
+                <div class="project-info">
+                    <div class="project-header">
+                        <div>
+                            <h3>Vehicle Assembly Standardization & Quality Documentation</h3>
+                            <p class="project-date">Sep 2025 – Dec 2025</p>
+                        </div>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">Process Documentation</span>
+                        <span class="tag">Quality Systems</span>
+                        <span class="tag">Manufacturing</span>
+                    </div>
+                    <p class="project-summary">
+                        Transformed low-volume vehicle assembly from tribal knowledge-dependent to a standardized, 
+                        documented process with formal work instructions and quality test procedures.
+                    </p>
+                    <div class="project-results">
+                        <div class="result-metric">
+                            <div class="result-value">100%</div>
+                            <div class="result-label">Process Documentation</div>
+                        </div>
+                        <div class="result-metric">
+                            <div class="result-value">Reduced</div>
+                            <div class="result-label">Tribal Knowledge Risk</div>
+                        </div>
+                    </div>
+                </div>
+            </article>
 
-        <p><strong>Results</strong></p>
-        <ul>
-            <li>Improved cure compliance from 0% to &gt;80% under validated test conditions.</li>
-            <li>Demonstrated an approximate 21-minute reduction in cure cycle time per vehicle through grouping like parts.</li>
-            <li>Established a repeatable, data-driven thermal validation framework to support future process optimization.</li>
-        </ul>
+            <!-- Project 3 -->
+            <article class="project-card" data-project="3">
+                <div class="project-image loading">
+                    <img src="images/SJ3220Defect.jpg" alt="Manufacturing Defect Investigation" loading="lazy" onload="this.parentElement.classList.remove('loading')">
+                </div>
+                <div class="project-info">
+                    <div class="project-header">
+                        <div>
+                            <h3>Manufacturing Defect Root Cause Investigation</h3>
+                            <p class="project-date">Apr 2025</p>
+                        </div>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">Root Cause Analysis</span>
+                        <span class="tag">Quality Control</span>
+                        <span class="tag">Problem Solving</span>
+                    </div>
+                    <p class="project-summary">
+                        Led cross-functional investigation to identify and eliminate recurring weld defects through 
+                        systematic data analysis and on-floor root cause investigation.
+                    </p>
+                    <div class="project-results">
+                        <div class="result-metric">
+                            <div class="result-value">100%</div>
+                            <div class="result-label">Defect Elimination</div>
+                        </div>
+                        <div class="result-metric">
+                            <div class="result-value">Multi-shift</div>
+                            <div class="result-label">Analysis Scope</div>
+                        </div>
+                    </div>
+                </div>
+            </article>
 
-        <p><strong>Focus:</strong> Thermal profiling, manufacturing throughput, data-driven process optimization</p>
-    </div>
-</div>
+            <!-- Project 4 -->
+            <article class="project-card" data-project="4">
+                <div class="project-image loading">
+                    <img src="images/Linamar-Logo-Socials.png" alt="Automated Defect Tracking System" loading="lazy" onload="this.parentElement.classList.remove('loading')">
+                </div>
+                <div class="project-info">
+                    <div class="project-header">
+                        <div>
+                            <h3>Automated Defect Tracking System (VBA)</h3>
+                            <p class="project-date">Apr 2025 – May 2025</p>
+                        </div>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">Automation</span>
+                        <span class="tag">VBA</span>
+                        <span class="tag">Data Systems</span>
+                    </div>
+                    <p class="project-summary">
+                        Developed Excel VBA-based defect tracking system with custom UserForm interface, eliminating 
+                        paper-based workflow and enabling real-time quality visibility.
+                    </p>
+                    <div class="project-results">
+                        <div class="result-metric">
+                            <div class="result-value">50%</div>
+                            <div class="result-label">Time Reduction</div>
+                        </div>
+                        <div class="result-metric">
+                            <div class="result-value">Real-time</div>
+                            <div class="result-label">Data Visibility</div>
+                        </div>
+                        <div class="result-metric">
+                            <div class="result-value">Zero</div>
+                            <div class="result-label">Transcription Errors</div>
+                        </div>
+                    </div>
+                </div>
+            </article>
 
-        <!-- Project 2 -->
-        <div class="project-card-scroll" data-project="2">
-            <div class="project-image-scroll">
-                <img src="images/Argo Logo.jpg" alt="ARGO Logo" style="width: 100%; height: 100%; object-fit: contain;">
-            </div>
-            <div class="project-info-scroll">
-                <h3>Vehicle Assembly Standardization & Quality Documentation</h3>
-                <div class="project-date">Ontario Drive &amp; Gear · Sep. 2025 – Dec. 2025</div>
+            <!-- Project 5 -->
+            <article class="project-card" data-project="5">
+                <div class="project-image loading">
+                    <img src="images/Soap Symposium.jpg" alt="Chemical Product Design" loading="lazy" onload="this.parentElement.classList.remove('loading')">
+                </div>
+                <div class="project-info">
+                    <div class="project-header">
+                        <div>
+                            <h3>Chemical Product Design & Process Development</h3>
+                            <p class="project-date">Oct 2024 – Dec 2024</p>
+                        </div>
+                    </div>
+                    <div class="project-tags">
+                        <span class="tag">Product Design</span>
+                        <span class="tag">Chemical Engineering</span>
+                        <span class="tag">Team Project</span>
+                    </div>
+                    <p class="project-summary">
+                        Designed and produced consumer chemical product (soap) through iterative formulation 
+                        testing, demonstrating end-to-end product development from concept to controlled production.
+                    </p>
+                    <div class="project-results">
+                        <div class="result-metric">
+                            <div class="result-value">Complete</div>
+                            <div class="result-label">Product Lifecycle</div>
+                        </div>
+                        <div class="result-metric">
+                            <div class="result-value">Team-based</div>
+                            <div class="result-label">Collaboration</div>
+                        </div>
+                    </div>
+                </div>
+            </article>
 
-        <p><strong>Problem</strong></p>
-        <ul>
-            <li>Low-volume vehicle assembly relied heavily on tribal knowledge, resulting in inconsistent build execution and difficulty incorporating engineering changes.</li>
-            <li>Lack of standardized documentation increased risk during handoffs between engineering, quality, and production.</li>
-        </ul>
-
-        <p><strong>Approach</strong></p>
-        <ul>
-            <li>Developed standardized assembly work instructions to capture the intended build sequence and critical checks.</li>
-            <li>Created quality test procedures to support functional validation and leak testing at key assembly stages.</li>
-            <li>Refined documentation iteratively based on production feedback and evolving engineering requirements.</li>
-        </ul>
-
-        <p><strong>Results</strong></p>
-        <ul>
-            <li>Established a standardized, repeatable assembly process suitable for low-volume vehicle production.</li>
-            <li>Reduced reliance on tribal knowledge by capturing build intent, inspection points, and test requirements in formal documentation.</li>
-            <li>Improved cross-functional alignment between engineering, quality, and production for future builds and revisions.</li>
-        </ul>
-
-        <p><strong>Focus:</strong> Process standardization, documentation, production readiness</p>
-    </div>
-</div>
-
-        <!-- Project 3 -->
-        <div class="project-card-scroll" data-project="3">
-            <div class="project-image-scroll">
-                <img src="images/SJ3220Defect.jpg" alt="Production Component" style="width: 100%; height: 100%; object-fit: contain;">
-            </div>
-            <div class="project-info-scroll">
-                <h3>Manufacturing Defect Root Cause Investigation</h3>
-                <div class="project-date">Linamar Corporation · Apr. 2025</div>
-
-        <p><strong>Problem</strong></p>
-        <ul>
-            <li>A sudden increase in weld defects negatively impacted quality performance and production stability.</li>
-            <li>The root cause was not immediately apparent, requiring structured investigation across shifts.</li>
-        </ul>
-
-        <p><strong>Approach</strong></p>
-        <ul>
-            <li>Analyzed quality data trends to identify defect patterns and isolate affected components.</li>
-            <li>Conducted on-floor root cause analysis with production teams across multiple shifts.</li>
-            <li>Implemented targeted corrective actions and monitored post-fix performance.</li>
-        </ul>
-
-        <p><strong>Results</strong></p>
-        <ul>
-            <li>Achieved a sustained 100% elimination of the recurring weld defect over multiple production days.</li>
-            <li>Improved communication and alignment between quality and production teams during issue resolution.</li>
-        </ul>
-
-        <p><strong>Focus:</strong> Root cause analysis, manufacturing quality, cross-functional collaboration</p>
-    </div>
-</div>
-
-        <!-- Project 4 -->
-        <div class="project-card-scroll" data-project="4">
-            <div class="project-image-scroll">
-                <img src="images/Linamar-Logo-Socials.png" alt="Linamar Logo" style="width: 100%; height: 100%; object-fit: cover;">
-            </div>
-            <div class="project-info-scroll">
-                <h3>Automated Defect Tracking System (VBA)</h3>
-                <div class="project-date">Linamar Corporation · Apr. 2025 – May 2025</div>
-
-        <p><strong>Problem</strong></p>
-        <ul>
-            <li>Defect tracking relied on paper forms and manual Excel entry, creating delays and transcription errors.</li>
-            <li>Lack of real-time visibility limited timely response to emerging quality issues.</li>
-        </ul>
-
-        <p><strong>Approach</strong></p>
-        <ul>
-            <li>Designed and implemented an Excel VBA-based defect tracking system with a custom UserForm interface.</li>
-            <li>Automated data validation, database population, and defect categorization.</li>
-            <li>Enabled direct operator input at the workstation, eliminating duplicate manual entry.</li>
-        </ul>
-
-        <p><strong>Results</strong></p>
-        <ul>
-            <li>Reduced defect data entry and processing time by approximately 50%.</li>
-            <li>Improved data accuracy by removing manual transcription steps.</li>
-            <li>Enabled real-time defect visibility for quality staff and management.</li>
-        </ul>
-
-        <p><strong>Focus:</strong> Automation, data integrity, manufacturing efficiency</p>
-    </div>
-</div>
-
-        <!-- Project 5 -->
-        <div class="project-card-scroll" data-project="5">
-            <div class="project-image-scroll">
-                <img src="images/Soap Symposium.jpg" alt="Soap Symposium" style="width: 100%; height: 100%; object-fit: contain;">
-            </div>
-            <div class="project-info-scroll">
-                <h3>Chemical Product Design & Process Development</h3>
-                <div class="project-date">University of Waterloo · Oct. 2024 – Dec. 2024</div>
-
-        <p><strong>Problem</strong></p>
-        <ul>
-            <li>Design and production of a consumer chemical product required balancing formulation performance, process control, and quality constraints.</li>
-        </ul>
-
-        <p><strong>Approach</strong></p>
-        <ul>
-            <li>Selected materials and developed a soap formulation through iterative testing and refinement.</li>
-            <li>Collaborated in a team-based environment to progress from concept to final product.</li>
-        </ul>
-
-        <p><strong>Results</strong></p>
-        <ul>
-            <li>Successfully produced a functional final product meeting defined project requirements.</li>
-            <li>Demonstrated end-to-end product development, from formulation design to controlled production.</li>
-        </ul>
-
-        <p><strong>Focus:</strong> Chemical engineering fundamentals, product design, process development</p>
-    </div>
-</div>
+        </div>
+    </section>
 
     <!-- EXPERIENCE SECTION -->
-    <div id="experience" class="section">
+    <section id="experience" class="section">
         <h2>Experience</h2>
         <div class="experience-list">
-            <div class="experience-item">
+            <article class="experience-item">
                 <h3>Quality Engineer</h3>
-                <p class="meta"><strong>Ontario Drive & Gear Ltd. - Gear and Vehicle (Argo) Divisions</strong></p>
-                <p class="meta">Sep. 2025—Dec. 2025</p>
-                <p>Optimized the paint line and reduced defects, standardized assembly procedures, and created PPAP/FA submissions and inspection specifications.</p>
-            </div>
-            <div class="experience-item">
+                <p class="company">Ontario Drive & Gear Ltd. - Gear and Vehicle (Argo) Divisions</p>
+                <p class="meta">Sep 2025 – Dec 2025</p>
+                <p>
+                    Optimized paint line thermal processes and reduced defects through data-driven analysis. 
+                    Standardized assembly procedures for low-volume vehicle production and created comprehensive 
+                    PPAP/FA submissions and inspection specifications.
+                </p>
+            </article>
+            <article class="experience-item">
                 <h3>Propulsion Team Member</h3>
-                <p class="meta"><strong>Waterloo Rocketry</strong></p>
-                <p class="meta">Sep. 2025—Present</p>
-                <p>Working on the propulsion sub-team and helping conduct various testing to support propulsion system development.</p>
-            </div>
-            <div class="experience-item">
+                <p class="company">Waterloo Rocketry</p>
+                <p class="meta">Sep 2025 – Present</p>
+                <p>
+                    Contributing to propulsion system development through testing and validation activities. 
+                    Supporting the team in advancing rocket propulsion technology and system reliability.
+                </p>
+            </article>
+            <article class="experience-item">
                 <h3>Quality Assurance</h3>
-                <p class="meta"><strong>Linamar</strong></p>
-                <p class="meta">Jan. 2025—May 2025</p>
-                <p>Led quality iniatives by eliminating defects, automating tracking systems, inspecting parts, and managed Non-Conformance Reports.</p>
-            </div>
-            <div class="experience-item">
+                <p class="company">Linamar Corporation</p>
+                <p class="meta">Jan 2025 – May 2025</p>
+                <p>
+                    Led quality initiatives including defect elimination, automated tracking system development, 
+                    parts inspection, and Non-Conformance Report management. Delivered measurable improvements 
+                    in production quality and data accuracy.
+                </p>
+            </article>
+            <article class="experience-item">
                 <h3>Mechanical Team Member</h3>
-                <p class="meta"><strong>Electrium Mobility</strong></p>
-                <p class="meta">Aug. 2025—Apr. 2025</p>
-                <p>Designed various components for the e-scooter using Solidworks while referencing KiCAD schematics and Solidworks files.</p>
-            </div>
+                <p class="company">Electrium Mobility</p>
+                <p class="meta">Aug 2024 – Apr 2025</p>
+                <p>
+                    Designed e-scooter components using SolidWorks while referencing KiCAD schematics and 
+                    CAD files. Contributed to mechanical design integration and component optimization.
+                </p>
+            </article>
         </div>
-    </div>
-
+    </section>
 
     <!-- EDUCATION SECTION -->
-    <div id="education" class="section">
+    <section id="education" class="section">
         <h2>Education</h2>
-        
-        <div class="card">
-            <h3>BASc, Chemical Engineering - University of Waterloo</h3>
-            <p class="meta">Expected Graduation: 2029</p>
-            <p>
-                Relevant coursework: Chemical Engineering Concepts I & II, Chemical Engineering Design Studio I & II.
-            </p>
-            
+        <div class="education-grid">
+            <article class="education-card">
+                <h3>BASc, Chemical Engineering</h3>
+                <p class="company">University of Waterloo</p>
+                <p class="meta">Expected Graduation: 2029</p>
+                <p>
+                    Relevant coursework: Chemical Engineering Concepts I & II, Chemical Engineering Design Studio I & II.
+                </p>
+            </article>
+            <article class="education-card">
+                <h3>Academic Achievements</h3>
+                <ul>
+                    <li>Excellent Academic Standing (&gt;80%) across all terms</li>
+                    <li>President's Scholarship - $2,000</li>
+                </ul>
+            </article>
         </div>
+    </section>
 
-        <div class="card">
-            <h3>Academic Achievements</h3>
-            <ul style="margin-left: 1.5rem; margin-top: 1rem;">
-                <li style="margin-bottom: 0.5rem;">Excellent Academic Standing (>80%) across all terms.</li>
-                <li style="margin-bottom: 0.5rem;">President's Scholarship - $2,000</li>
-            </ul>
-        </div>
-    </div>
-
-
-
-    <!-- PROJECT DETAIL PAGE -->
-    <div id="projectDetailPage" class="project-detail-page">
-        <button class="project-back-button" onclick="closeProjectDetail()" aria-label="Back">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/>
-            </svg>
-            <span class="back-text">Back</span>
-        </button>
-        <div class="project-detail-content">
-            <div class="detail-header">
-                <h1 id="detailTitle">Project Title</h1>
-                <p class="meta" id="detailDate">Date: </p>
-            </div>
-            <div class="detail-image-container" id="detailImageContainer">
-                <img id="detailImage" src="" alt="Project Image" style="display: none;">
-            </div>
-            <div class="detail-section">
-                <h3>Problem</h3>
-                <div id="detailProblem">
-                    <p>The weld cell production line for scissor levels in Skyjack machines lacked an efficient defect tracking system. Each scissor level variant had a unique part number due to slight differences, requiring detailed documentation of part numbers, defect types, and other specifications. The existing process was manual and time-consuming:
-
-1. Welders documented defects on paper
-2. Paper forms were handed off for data entry
-3. Data was manually typed into Excel spreadsheets at the end of each shift
-
-This two-step process created delays and increased the risk of transcription errors. The inefficient workflow consumed valuable production time and made it difficult to quickly analyze defect trends or respond to quality issues since data was entered only at the end of each shift.</p>
+    <!-- PROJECT DETAIL MODAL -->
+    <div class="modal-overlay" id="projectModal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <div>
+                    <h2 class="modal-title" id="modalTitle"></h2>
+                    <p class="modal-meta" id="modalMeta"></p>
                 </div>
+                <button class="modal-close" onclick="closeModal()" aria-label="Close modal">×</button>
             </div>
-            <div class="detail-section">
-                <h3>Solution</h3>
-                <div id="detailSolution">
-                    <p>I developed an automated defect tracking system using Excel VBA that completely transformed the data entry workflow. The solution centered around a custom UserForm interface that featured images of all the different scissor level types, allowing welders to visually identify and select the correct part rather than manually entering part numbers. The form was designed to be intuitive and user-friendly, with dropdown menus and visual aids that made data entry straightforward even for those who weren't comfortable with traditional spreadsheet interfaces. Behind this interface, I programmed a macro that automatically captured all the form data and populated the Excel database without any manual typing required. This meant that welders could now input defect information directly into the system at their workstations, completely bypassing the paper-based intermediate step. The system validation built into the form also helped prevent common data entry errors, such as incorrect part numbers or missing required fields.</p>
+            <div class="modal-body">
+                <div class="modal-image" id="modalImageContainer">
+                    <img id="modalImage" src="" alt="" style="display: none;">
                 </div>
-            </div>
-            <div class="detail-section">
-                <h3>Results</h3>
-                <div id="detailResults">
-                    <p>The new automated system reduced the total time required for defect data tracking by 50%, delivering immediate improvements to our quality control process. By eliminating the paper handoff step between welders and data entry personnel, we removed a significant bottleneck from the workflow and enabled real-time defect tracking. The intuitive UserForm interface proved to be considerably faster than manual typing, and welders reported that the visual part selection made it easier to ensure they were documenting the correct information. Beyond the time savings, the system dramatically improved data accuracy by removing the transcription step where errors may frequently occur. The automation freed up substantial staff time that could be redirected toward higher-value quality control activities, such as analyzing defect patterns and implementing corrective actions. Management gained the ability to access up-to-date defect data instantly rather than waiting for manual entry to be completed, enabling faster decision-making and more responsive quality management across the production line.</p>
+                <div class="modal-section">
+                    <h3>Problem</h3>
+                    <div id="modalProblem"></div>
+                </div>
+                <div class="modal-section">
+                    <h3>Approach</h3>
+                    <div id="modalApproach"></div>
+                </div>
+                <div class="modal-section">
+                    <h3>Results</h3>
+                    <div id="modalResults"></div>
                 </div>
             </div>
         </div>
     </div>
 
     <footer>
-        <div class="social-icons">
-            <a href="images/Christopher_Noce_Resume.pdf" target="_blank" title="Resume" class="resume-button">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
-                </svg>
-                <span class="resume-text">Resume</span>
-            </a>
-            <a href="https://linkedin.com/in/christophernoce" target="_blank" title="LinkedIn">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
-            </a>
-            <a href="https://github.com/ChristopherNoce" target="_blank" title="GitHub">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                </svg>
-            </a>
+        <div class="footer-content">
+            <div class="footer-social">
+                <a href="https://linkedin.com/in/christophernoce" target="_blank" title="LinkedIn" aria-label="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </a>
+                <a href="https://github.com/ChristopherNoce" target="_blank" title="GitHub" aria-label="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+                <a href="images/Christopher_Noce_Resume.pdf" target="_blank" title="Resume" aria-label="Resume">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                    </svg>
+                </a>
+            </div>
+            <p class="footer-text">© 2026 Christopher Noce. Built with care.</p>
         </div>
     </footer>
 
     <script>
-        const PROJECTS_CLICKABLE = false;
+        // Project data for modals
+        const projectData = {
+            1: {
+                title: "Paint Line Thermal Process Optimization",
+                date: "Sep 2025 – Dec 2025",
+                company: "Ontario Drive & Gear",
+                image: "images/Cure Profiles Initial vs Optimized.png",
+                problem: `
+                    <p>Powder coat cure performance on large chassis assemblies was inconsistent due to non-uniform heating across parts with varying thermal mass. This resulted in:</p>
+                    <ul>
+                        <li>Repeated out-of-spec conditions that compromised product quality</li>
+                        <li>Constrained oven throughput limiting production capacity</li>
+                        <li>Lack of data-driven approach to understand thermal behavior</li>
+                        <li>Inability to predict and control cure outcomes reliably</li>
+                    </ul>
+                `,
+                approach: `
+                    <p>Developed and implemented a systematic thermal profiling methodology:</p>
+                    <ul>
+                        <li>Instrumented representative chassis components using multi-point dataloggers to capture temperature profiles throughout the cure cycle</li>
+                        <li>Conducted 20+ validation trials under various operating conditions to characterize thermal response patterns</li>
+                        <li>Classified components into thermal families based on empirically observed heat-up behavior and thermal mass characteristics</li>
+                        <li>Redesigned oven load configurations to align cure strategy with part thermal characteristics</li>
+                        <li>Established validation protocols to ensure consistent, repeatable performance</li>
+                    </ul>
+                `,
+                results: `
+                    <p>The data-driven optimization delivered significant performance improvements:</p>
+                    <ul>
+                        <li><strong>Improved cure compliance from 0% to >80%</strong> under validated test conditions</li>
+                        <li><strong>Demonstrated ~21-minute reduction</strong> in cure cycle time per vehicle through strategic part grouping</li>
+                        <li>Established a repeatable, data-driven thermal validation framework to support future process optimization</li>
+                        <li>Created foundation for continuous improvement in thermal processing operations</li>
+                        <li>Enabled predictable, consistent cure outcomes across production runs</li>
+                    </ul>
+                `
+            },
+            2: {
+                title: "Vehicle Assembly Standardization & Quality Documentation",
+                date: "Sep 2025 – Dec 2025",
+                company: "Ontario Drive & Gear",
+                image: "images/Argo Logo.jpg",
+                problem: `
+                    <p>Low-volume vehicle assembly faced significant operational challenges:</p>
+                    <ul>
+                        <li>Heavy reliance on tribal knowledge resulted in inconsistent build execution between operators</li>
+                        <li>Difficulty incorporating engineering changes due to lack of formal documentation</li>
+                        <li>Increased risk during knowledge transfer and personnel transitions</li>
+                        <li>No standardized quality validation checkpoints throughout assembly</li>
+                        <li>Challenges maintaining consistency across engineering, quality, and production teams</li>
+                    </ul>
+                `,
+                approach: `
+                    <p>Created comprehensive documentation system to standardize operations:</p>
+                    <ul>
+                        <li>Developed standardized assembly work instructions capturing intended build sequence and critical process steps</li>
+                        <li>Created quality test procedures to support functional validation and leak testing at key assembly stages</li>
+                        <li>Documented critical inspection points and acceptance criteria</li>
+                        <li>Refined documentation iteratively based on production feedback and evolving engineering requirements</li>
+                        <li>Established formal change control process for documentation updates</li>
+                    </ul>
+                `,
+                results: `
+                    <p>Transformation of assembly operations through standardization:</p>
+                    <ul>
+                        <li>Established standardized, repeatable assembly process suitable for low-volume vehicle production</li>
+                        <li><strong>Reduced reliance on tribal knowledge</strong> by capturing build intent, inspection points, and test requirements in formal documentation</li>
+                        <li>Improved cross-functional alignment between engineering, quality, and production for future builds and revisions</li>
+                        <li>Created foundation for faster onboarding and training of new personnel</li>
+                        <li>Enabled more efficient implementation of engineering changes</li>
+                    </ul>
+                `
+            },
+            3: {
+                title: "Manufacturing Defect Root Cause Investigation",
+                date: "Apr 2025",
+                company: "Linamar Corporation",
+                image: "images/SJ3220Defect.jpg",
+                problem: `
+                    <p>Production faced a critical quality challenge:</p>
+                    <ul>
+                        <li>Sudden increase in weld defects negatively impacted quality performance metrics</li>
+                        <li>Production stability compromised with unpredictable defect occurrence</li>
+                        <li>Root cause was not immediately apparent from initial observation</li>
+                        <li>Required structured investigation methodology across multiple production shifts</li>
+                        <li>Time pressure to resolve issue and restore normal production flow</li>
+                    </ul>
+                `,
+                approach: `
+                    <p>Implemented systematic root cause analysis methodology:</p>
+                    <ul>
+                        <li>Analyzed quality data trends to identify defect patterns and timing correlations</li>
+                        <li>Isolated affected components and production conditions</li>
+                        <li>Conducted on-floor root cause analysis working directly with production teams across multiple shifts</li>
+                        <li>Applied structured problem-solving techniques to identify contributing factors</li>
+                        <li>Implemented targeted corrective actions based on data-driven findings</li>
+                        <li>Established monitoring protocol to verify effectiveness of corrections</li>
+                    </ul>
+                `,
+                results: `
+                    <p>Systematic approach delivered sustained quality improvement:</p>
+                    <ul>
+                        <li><strong>Achieved sustained 100% elimination</strong> of the recurring weld defect over multiple production days</li>
+                        <li>Restored production stability and quality confidence</li>
+                        <li>Improved communication and alignment between quality and production teams during issue resolution</li>
+                        <li>Established replicable methodology for future defect investigations</li>
+                        <li>Demonstrated value of data-driven problem-solving in manufacturing environment</li>
+                    </ul>
+                `
+            },
+            4: {
+                title: "Automated Defect Tracking System (VBA)",
+                date: "Apr 2025 – May 2025",
+                company: "Linamar Corporation",
+                image: "images/Linamar-Logo-Socials.png",
+                problem: `
+                    <p>The weld cell production line for scissor levels in Skyjack machines lacked an efficient defect tracking system:</p>
+                    <ul>
+                        <li>Each scissor level variant had a unique part number, requiring detailed documentation of part numbers, defect types, and specifications</li>
+                        <li>Manual, paper-based workflow: welders documented defects on paper → forms handed off for data entry → data manually typed into Excel</li>
+                        <li>Two-step process created significant delays and increased risk of transcription errors</li>
+                        <li>Time-consuming workflow consumed valuable production time</li>
+                        <li>Difficult to quickly analyze defect trends or respond to quality issues</li>
+                        <li>Data only available after end-of-shift manual entry, limiting real-time visibility</li>
+                    </ul>
+                `,
+                approach: `
+                    <p>Developed comprehensive VBA-based automation solution:</p>
+                    <ul>
+                        <li>Created custom UserForm interface featuring visual images of all scissor level types for intuitive part selection</li>
+                        <li>Designed user-friendly form with dropdown menus and visual aids accessible to all skill levels</li>
+                        <li>Programmed automated macro to capture form data and populate Excel database without manual typing</li>
+                        <li>Enabled welders to input defect information directly at workstations, eliminating paper-based intermediate step</li>
+                        <li>Built-in validation to prevent common data entry errors (incorrect part numbers, missing required fields)</li>
+                        <li>Implemented real-time database updates for immediate data availability</li>
+                    </ul>
+                `,
+                results: `
+                    <p>Automation delivered substantial operational improvements:</p>
+                    <ul>
+                        <li><strong>Reduced total time for defect data tracking by approximately 50%</strong></li>
+                        <li>Eliminated paper handoff bottleneck between welders and data entry personnel</li>
+                        <li>Enabled real-time defect tracking capabilities for immediate visibility</li>
+                        <li>Visual part selection proved considerably faster than manual typing</li>
+                        <li>Dramatically improved data accuracy by removing transcription step where errors frequently occurred</li>
+                        <li>Freed substantial staff time for higher-value quality control activities (analyzing defect patterns, implementing corrective actions)</li>
+                        <li>Management gained instant access to current defect data rather than waiting for end-of-shift manual entry</li>
+                        <li>Enabled faster decision-making and more responsive quality management</li>
+                    </ul>
+                `
+            },
+            5: {
+                title: "Chemical Product Design & Process Development",
+                date: "Oct 2024 – Dec 2024",
+                company: "University of Waterloo",
+                image: "images/Soap Symposium.jpg",
+                problem: `
+                    <p>Academic project requiring complete product development cycle:</p>
+                    <ul>
+                        <li>Design and produce a consumer chemical product balancing formulation performance, process control, and quality constraints</li>
+                        <li>Navigate trade-offs between material properties, cost, and manufacturing feasibility</li>
+                        <li>Develop production process capable of consistent, repeatable results</li>
+                        <li>Work within team environment with shared decision-making and resource constraints</li>
+                    </ul>
+                `,
+                approach: `
+                    <p>Applied systematic product development methodology:</p>
+                    <ul>
+                        <li>Selected materials based on desired product properties and compatibility requirements</li>
+                        <li>Developed soap formulation through iterative testing and refinement cycles</li>
+                        <li>Established production parameters to ensure consistent quality and yield</li>
+                        <li>Collaborated in team-based environment managing tasks from concept through final production</li>
+                        <li>Applied chemical engineering principles to optimize formulation and process</li>
+                    </ul>
+                `,
+                results: `
+                    <p>Successfully completed end-to-end product development:</p>
+                    <ul>
+                        <li>Produced functional final product meeting all defined project requirements</li>
+                        <li>Demonstrated complete product development lifecycle from formulation design to controlled production</li>
+                        <li>Applied chemical engineering fundamentals in practical product development context</li>
+                        <li>Developed skills in iterative design, testing, and refinement</li>
+                        <li>Gained hands-on experience with process development and quality control</li>
+                    </ul>
+                `
+            }
+        };
+
         // Theme management
         function getTheme() {
             return localStorage.getItem('theme') || 'light';
@@ -1302,24 +1570,85 @@ This two-step process created delays and increased the risk of transcription err
             setTheme(newTheme);
         }
 
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Modal functions
+        function openModal(projectId) {
+            const project = projectData[projectId];
+            if (!project) return;
+
+            document.getElementById('modalTitle').textContent = project.title;
+            document.getElementById('modalMeta').textContent = `${project.company} • ${project.date}`;
+            
+            const modalImage = document.getElementById('modalImage');
+            const modalImageContainer = document.getElementById('modalImageContainer');
+            if (project.image) {
+                modalImage.src = project.image;
+                modalImage.alt = project.title;
+                modalImage.style.display = 'block';
+            } else {
+                modalImage.style.display = 'none';
+            }
+
+            document.getElementById('modalProblem').innerHTML = project.problem;
+            document.getElementById('modalApproach').innerHTML = project.approach;
+            document.getElementById('modalResults').innerHTML = project.results;
+
+            const modal = document.getElementById('projectModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(event) {
+            // If event exists and target is not the overlay, don't close
+            if (event && event.target.classList.contains('modal-content')) {
+                return;
+            }
+            
+            const modal = document.getElementById('projectModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal with ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                const navLinks = document.getElementById('navLinks');
+                navLinks.classList.remove('active');
+            });
+        });
+
         // Initialize theme on page load
-        const savedTheme = getTheme();
-        setTheme(savedTheme);
+        setTheme(getTheme());
 
         // Scroll reveal for projects
         function initScrollReveal() {
-            const projectCards = document.querySelectorAll('.project-card-scroll');
+            const projectCards = document.querySelectorAll('.project-card');
             
             const observerOptions = {
                 root: null,
-                rootMargin: '-50px 0px -50px 0px',
-                threshold: 0.05
+                rootMargin: '-50px 0px -100px 0px',
+                threshold: 0.1
             };
 
             const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
+                entries.forEach((entry, index) => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('revealed');
+                        // Stagger the animation
+                        setTimeout(() => {
+                            entry.target.classList.add('revealed');
+                        }, index * 100);
                     }
                 });
             }, observerOptions);
@@ -1329,204 +1658,33 @@ This two-step process created delays and increased the risk of transcription err
             });
         }
 
-        // Typing animation function
-        function typeText(element, text, totalTime) {
-            const letters = text.split('');
-            const totalLetters = letters.length;
-            const baseDelay = totalTime / totalLetters;
-            
-            // Create uneven timing delays (vary between 80% and 120% of base delay)
-            const delays = letters.map(() => {
-                const variation = (Math.random() - 0.5) * 0.4; // -0.2 to +0.2
-                return baseDelay * (1 + variation);
-            });
-            
-            let currentIndex = 0;
-            let accumulatedDelay = 0;
-            
-            function typeNextLetter() {
-                if (currentIndex < totalLetters) {
-                    setTimeout(() => {
-                        element.innerHTML = text.substring(0, currentIndex + 1) + '<span class="typing-cursor"></span>';
-                        currentIndex++;
-                        typeNextLetter();
-                    }, delays[currentIndex]);
-                }
-            }
-            
-            typeNextLetter();
-        }
-
-        // Project Modal Functions
-        const projectData = {
-            1: {
-                title: "Powder Coating Cure Process Optimization Through Thermal Profiling",
-                date: "Sep. 2025—Dec. 2025",
-                image: "C:\Users\nocec\Downloads\images\Cure Profiles Initial vs Optimized.png", // Add image path here
-                problem: `<p>Traditional powder coating processes applied uniform baking cycles regardless of part size or geometry, resulting in inefficient oven utilization. Parts with different thermal mass were treated the same way, leading to over-curing of smaller parts and potential under-curing of larger, complex geometries.</p>`,
-                solution: `<p>I developed a data-driven classification system by collecting thermal profiling data across various part types. Through systematic analysis, I created part "families" based on heat transfer characteristics, enabling more tailored cure schedules that account for part geometry and thermal mass.</p>`,
-                results: `<p>This optimization approach resulted in significant cycle time reduction while improving cure quality standards. The classification system allows for more efficient oven utilization and better process control, reducing energy consumption and improving overall production efficiency.</p>`
-            },
-            2: {
-                title: "Vehicle Assembly Process Standardization and Quality Control Documentation",
-                date: "Sep. 2025—Dec. 2025",
-                image: "C:\Users\nocec\Downloads\images\Argo Logo.jpg",
-                problem: `<p>Assembly processes lacked standardized documentation, leading to inconsistent manufacturing practices and difficulty incorporating engineering changes. Quality control procedures varied across shifts, resulting in process variation and potential compliance issues.</p>`,
-                solution: `<p>Created detailed work instructions to standardize assembly processes and established standardized testing protocols for quality assurance, including leak detection and operational validation procedures. Documented procedures were refined based on production feedback.</p>`,
-                results: `<p>This work improved manufacturing consistency and enabled better compliance with engineering specifications. The standardized documentation facilitated training and ensured consistent quality across all production shifts.</p>`
-            },
-            3: {
-                title: "Manufacturing Defect Analysis and Root Cause Investigation",
-                date: "April 2025",
-                image: "C:\Users\nocec\Downloads\images\SJ3220Defect.jpg", // Add image path here
-                problem: `<p>A sudden increase in welding defects on production components was affecting quality metrics and production output. The root cause was unclear, and production teams needed a systematic approach to identify and resolve the issue.</p>`,
-                solution: `<p>Investigated the defect trend by analyzing quality data patterns and conducting systematic root cause analysis. Collaborated directly with production operators to understand process variations and identified the underlying cause through data analysis and operator feedback.</p>`,
-                results: `<p>Successfully eliminated defect occurrence over multiple production days. The investigation demonstrated the effectiveness of data-driven problem-solving and clear communication across manufacturing operations, establishing a template for future defect resolution.</p>`
-            },
-            4: {
-                title: "Defect Tracking Optimization",
-                date: "Apr. 2025—May 2025",
-                image: "C:\Users\nocec\Downloads\images\Linamar-Logo-Socials.png", // Add image path here
-                problem: `<p>The weld cell production line for scissor levels in Skyjack machines lacked an efficient defect tracking system. Each scissor level variant had a unique part number due to slight differences, requiring detailed documentation of part numbers, defect types, and other specifications. The existing process was manual and time-consuming:
-
-1. Welders documented defects on paper
-2. Paper forms were handed off for data entry
-3. Data was manually typed into Excel spreadsheets
-
-This two-step process created delays and increased the risk of transcription errors. The inefficient workflow consumed valuable production time and made it difficult to quickly analyze defect trends or respond to quality issues.</p>`,
-                solution: `<p>I developed an automated defect tracking system using Excel VBA that completely transformed the data entry workflow. The solution centered around a custom UserForm interface that featured images of all the different scissor level types, allowing welders to visually identify and select the correct part rather than manually entering part numbers. The form was designed to be intuitive and user-friendly, with dropdown menus and visual aids that made data entry straightforward even for those who weren't comfortable with traditional spreadsheet interfaces. Behind this interface, I programmed a macro that automatically captured all the form data and populated the Excel database without any manual typing required. This meant that welders could now input defect information directly into the system at their workstations, completely bypassing the paper-based intermediate step. The system validation built into the form also helped prevent common data entry errors, such as incorrect part numbers or missing required fields.</p>`,
-                results: `<p>The new automated system reduced the total time required for defect data tracking by approximately fifty percent, delivering immediate improvements to our quality control process. By eliminating the paper handoff step between welders and data entry personnel, we removed a significant bottleneck from the workflow and enabled real-time defect tracking. The intuitive UserForm interface proved to be considerably faster than manual typing, and welders reported that the visual part selection made it easier to ensure they were documenting the correct information. Beyond the time savings, the system dramatically improved data accuracy by removing the transcription step where errors frequently occurred. The automation freed up substantial staff time that could be redirected toward higher-value quality control activities, such as analyzing defect patterns and implementing corrective actions. Management gained the ability to access up-to-date defect data instantly rather than waiting for manual entry to be completed, enabling faster decision-making and more responsive quality management across the production line.</p>`
-            },
-            5: {
-                title: "Soap Symposium",
-                date: "Oct. 2024—Dec. 2024",
-                image: "C:\Users\nocec\Downloads\images\Soap Symposium.jpg", // Add image path here
-                problem: `<p>Placeholder text describing the problem that this project addresses. Explain the challenges, constraints, and why this problem needed to be solved.</p>`,
-                solution: `<p>Placeholder text describing the solution approach, methodology, and implementation. Detail the technical choices, design decisions, and how the solution addresses the problem.</p>`,
-                results: `<p>Placeholder text describing the outcomes, achievements, and impact of the project. Include any metrics, improvements, or lessons learned.</p>`
-            }
-        };
-
-        function openProjectDetail(projectNumber) {
-            const project = projectData[projectNumber];
-            if (!project) return;
-
-            const detailTitle = document.getElementById('detailTitle');
-            if (detailTitle) {
-                detailTitle.textContent = project.title;
-            }
-
-            const detailDate = document.getElementById('detailDate');
-            if (detailDate) {
-                detailDate.textContent = `Date: ${project.date}`;
-            }
-            
-            const detailImage = document.getElementById('detailImage');
-            const detailImageContainer = document.getElementById('detailImageContainer');
-            if (project.image) {
-                if (detailImage) {
-                    detailImage.src = project.image;
-                    detailImage.style.display = 'block';
-                }
-                if (detailImageContainer) {
-                    detailImageContainer.classList.add('has-image');
-                    detailImageContainer.textContent = '';
-                }
-            } else {
-                if (detailImage) {
-                    detailImage.style.display = 'none';
-                }
-                if (detailImageContainer) {
-                    detailImageContainer.classList.remove('has-image');
-                    detailImageContainer.textContent = project.title;
-                }
-            }
-
-            const detailProblem = document.getElementById('detailProblem');
-            if (detailProblem) {
-                detailProblem.innerHTML = project.problem;
-            }
-
-            const detailSolution = document.getElementById('detailSolution');
-            if (detailSolution) {
-                detailSolution.innerHTML = project.solution;
-            }
-
-            const detailResults = document.getElementById('detailResults');
-            if (detailResults) {
-                detailResults.innerHTML = project.results;
-            }
-
-            const detailPage = document.getElementById('projectDetailPage');
-            if (detailPage) {
-                detailPage.classList.add('active');
-                document.body.style.overflow = 'hidden';
-                // Reset scroll position to top when opening
-                detailPage.scrollTop = 0;
-            }
-        }
-
-        function closeProjectDetail() {
-            const detailPage = document.getElementById('projectDetailPage');
-            if (detailPage) {
-                detailPage.classList.remove('active');
-                document.body.style.overflow = '';
-                // Reset scroll position when closing
-                detailPage.scrollTop = 0;
-                // Scroll to Projects section
-                const projectsSection = document.getElementById('projects');
-                if (projectsSection) {
-                    setTimeout(() => {
-                        projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }, 100);
-                }
-            }
-        }
-
-        // Close detail page with ESC key
-        document.addEventListener('keydown', (e) => {
-            const detailPage = document.getElementById('projectDetailPage');
-            if (e.key === 'Escape' && detailPage && detailPage.classList.contains('active')) {
-                closeProjectDetail();
-            }
-        });
-
-        // Make project cards clickable - open detail page
-        // Use event delegation to handle clicks even after detail page operations
+        // Initialize scroll reveal and project click handlers when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
-            // Use event delegation on the projects container to ensure it always works
-            const projectsContainer = document.querySelector('.projects-container');
-            if (projectsContainer) {
-                projectsContainer.addEventListener('click', (e) => {
-                if (!PROJECTS_CLICKABLE) return;
-
-                const projectCard = e.target.closest('.project-card-scroll');
-                if (projectCard) {
-                    const projectNumber = parseInt(projectCard.getAttribute('data-project'));
-                    if (projectNumber) {
-                        openProjectDetail(projectNumber);
-        }
-    }
-});
-            }
-
-            // Ensure navigation links work even when detail page is open
-            document.querySelectorAll('nav a').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    // If detail page is open, close it first
-                    const detailPage = document.getElementById('projectDetailPage');
-                    if (detailPage && detailPage.classList.contains('active')) {
-                        closeProjectDetail();
+            initScrollReveal();
+            
+            // Add click handlers to project cards
+            document.querySelectorAll('.project-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const projectId = card.getAttribute('data-project');
+                    if (projectId) {
+                        openModal(parseInt(projectId));
                     }
                 });
             });
         });
 
-        // Initialize typing animation and scroll reveal on page load
-        window.addEventListener('DOMContentLoaded', () => {
-            const typingElement = document.getElementById('typing-name');
-            typeText(typingElement, "Hi, I'm Christopher", 1000);
-            initScrollReveal();
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
         });
     </script>
 </body>
