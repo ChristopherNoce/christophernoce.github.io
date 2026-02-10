@@ -366,6 +366,256 @@
             border-radius: 2px;
         }
 
+        /* Skills Carousel Section */
+        .skills-carousel-wrapper {
+            position: relative;
+            overflow: hidden;
+            padding: 2rem 0;
+        }
+
+        .skills-carousel {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-primary) var(--bg-primary);
+            padding: 1rem 0;
+        }
+
+        .skills-carousel::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .skills-carousel::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+            border-radius: 4px;
+        }
+
+        .skills-carousel::-webkit-scrollbar-thumb {
+            background: var(--accent-primary);
+            border-radius: 4px;
+        }
+
+        .skill-card {
+            flex: 0 0 250px;
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px var(--card-shadow);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px var(--card-hover-shadow);
+        }
+
+        .skill-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-primary);
+            border-radius: 12px;
+            padding: 1rem;
+        }
+
+        .skill-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .skill-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-tertiary);
+            font-family: 'Space Mono', monospace;
+        }
+
+        /* Carousel Navigation Buttons */
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .carousel-btn {
+            background: var(--accent-primary);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px var(--accent-shadow);
+        }
+
+        .carousel-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px var(--accent-shadow);
+        }
+
+        .carousel-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        /* Skills Modal */
+        .skills-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .skills-modal-overlay.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+
+        .skills-modal-content {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            max-width: 1000px;
+            max-height: 90vh;
+            width: 90%;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .skills-modal-overlay.active .skills-modal-content {
+            transform: scale(1) translateY(0);
+        }
+
+        .skills-modal-header {
+            position: sticky;
+            top: 0;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+        }
+
+        .skills-modal-close {
+            background: var(--bg-primary);
+            border: 2px solid var(--border-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .skills-modal-close:hover {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .skills-modal-body {
+            padding: 2rem;
+        }
+
+        .skills-modal-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .skills-modal-title-logo {
+            width: 50px;
+            height: 50px;
+        }
+
+        .skills-modal-title-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .skills-description {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+        }
+
+        .skills-collage {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .collage-item {
+            background: var(--bg-primary);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px var(--card-shadow);
+            transition: all 0.3s ease;
+        }
+
+        .collage-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 24px var(--card-hover-shadow);
+        }
+
+        .collage-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .collage-caption {
+            padding: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
         /* Projects Section */
         .projects-container {
             display: grid;
@@ -701,6 +951,14 @@
             .section {
                 padding: 3rem 1.5rem;
             }
+
+            .skills-carousel {
+                padding-left: 1rem;
+            }
+
+            .skill-card {
+                flex: 0 0 200px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -756,6 +1014,28 @@
 
             .result-metric {
                 min-width: auto;
+            }
+
+            .skills-modal-content {
+                width: 95%;
+                max-height: 90vh;
+                border-radius: 16px;
+            }
+
+            .skills-modal-header {
+                padding: 1rem 1.5rem;
+            }
+
+            .skills-modal-body {
+                padding: 1.5rem;
+            }
+
+            .skills-modal-title {
+                font-size: 1.5rem;
+            }
+
+            .skills-collage {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -919,26 +1199,25 @@
         }
 
         /* Scrollbar styling for modal */
-        .modal-content::-webkit-scrollbar {
+        .modal-content::-webkit-scrollbar,
+        .skills-modal-content::-webkit-scrollbar {
             width: 8px;
         }
 
-        .modal-content::-webkit-scrollbar-track {
+        .modal-content::-webkit-scrollbar-track,
+        .skills-modal-content::-webkit-scrollbar-track {
             background: var(--bg-primary);
         }
 
-        .modal-content::-webkit-scrollbar-thumb {
+        .modal-content::-webkit-scrollbar-thumb,
+        .skills-modal-content::-webkit-scrollbar-thumb {
             background: var(--accent-primary);
             border-radius: 4px;
         }
 
-        .modal-content::-webkit-scrollbar-thumb:hover {
+        .modal-content::-webkit-scrollbar-thumb:hover,
+        .skills-modal-content::-webkit-scrollbar-thumb:hover {
             background: var(--accent-secondary);
-        }
-
-        /* Project card cursor pointer */
-        .project-card {
-            cursor: pointer;
         }
 
         /* Print styles */
@@ -946,7 +1225,8 @@
             nav,
             .theme-toggle,
             footer,
-            .modal-overlay {
+            .modal-overlay,
+            .skills-modal-overlay {
                 display: none;
             }
 
@@ -998,6 +1278,7 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#education">Education</a></li>
             </ul>
@@ -1247,6 +1528,56 @@
         </div>
     </section>
 
+    <!-- TECHNICAL SKILLS SECTION -->
+    <section id="skills" class="section">
+        <h2>Technical Skills</h2>
+        <div class="skills-carousel-wrapper">
+            <div class="skills-carousel" id="skillsCarousel">
+                
+                <!-- SolidWorks Card -->
+                <div class="skill-card" onclick="openSkillsModal('solidworks')">
+                    <div class="skill-logo">
+                        <img src="images/skills/Solidworks Logo.png" alt="SolidWorks">
+                    </div>
+                    <div class="skill-name">SolidWorks</div>
+                    <div class="skill-subtitle">CAD Design</div>
+                </div>
+
+                <!-- Python Card -->
+                <div class="skill-card" onclick="openSkillsModal('python')">
+                    <div class="skill-logo">
+                        <img src="images/skills/Python Logo.png" alt="Python">
+                    </div>
+                    <div class="skill-name">Python</div>
+                    <div class="skill-subtitle">Programming & Analysis</div>
+                </div>
+
+                <!-- AutoCAD Card -->
+                <div class="skill-card" onclick="openSkillsModal('autocad')">
+                    <div class="skill-logo">
+                        <img src="images/skills/AutoCAD Logo.png" alt="AutoCAD">
+                    </div>
+                    <div class="skill-name">AutoCAD</div>
+                    <div class="skill-subtitle">Technical Drafting</div>
+                </div>
+
+                <!-- Aspen Card -->
+                <div class="skill-card" onclick="openSkillsModal('aspen')">
+                    <div class="skill-logo">
+                        <img src="images/skills/Aspen Logo.jpg" alt="Aspen">
+                    </div>
+                    <div class="skill-name">Aspen</div>
+                    <div class="skill-subtitle">Process Simulation</div>
+                </div>
+
+            </div>
+            <div class="carousel-nav">
+                <button class="carousel-btn" id="prevBtn" onclick="scrollCarousel(-1)" aria-label="Previous">‹</button>
+                <button class="carousel-btn" id="nextBtn" onclick="scrollCarousel(1)" aria-label="Next">›</button>
+            </div>
+        </div>
+    </section>
+
     <!-- EXPERIENCE SECTION -->
     <section id="experience" class="section">
         <h2>Experience</h2>
@@ -1314,6 +1645,23 @@
         </div>
     </section>
 
+    <!-- SKILLS MODAL -->
+    <div class="skills-modal-overlay" id="skillsModal" onclick="closeSkillsModal(event)">
+        <div class="skills-modal-content" onclick="event.stopPropagation()">
+            <div class="skills-modal-header">
+                <h2 class="skills-modal-title" id="skillsModalTitle">
+                    <div class="skills-modal-title-logo" id="skillsModalLogo"></div>
+                    <span id="skillsModalTitleText"></span>
+                </h2>
+                <button class="skills-modal-close" onclick="closeSkillsModal()" aria-label="Close modal">×</button>
+            </div>
+            <div class="skills-modal-body">
+                <div class="skills-description" id="skillsDescription"></div>
+                <div class="skills-collage" id="skillsCollage"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- PROJECT DETAIL MODAL -->
     <div class="modal-overlay" id="projectModal" onclick="closeModal(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
@@ -1368,6 +1716,86 @@
     </footer>
 
     <script>
+        // Skills data for modals
+        const skillsData = {
+            solidworks: {
+                title: "SolidWorks",
+                logo: "images/skills/Solidworks Logo.png",
+                description: "Proficient in 3D CAD modeling and mechanical design using SolidWorks. Experience creating detailed part models, assemblies, and technical drawings for manufacturing applications.",
+                projects: [
+                    {
+                        image: "images/skills/solidworks/project1.png",
+                        caption: "E-Scooter Component Design - Electrium Mobility"
+                    },
+                    {
+                        image: "images/skills/solidworks/project2.png",
+                        caption: "Assembly Design and Integration"
+                    },
+                    {
+                        image: "images/skills/solidworks/project3.png",
+                        caption: "Technical Drawings and Manufacturing Specs"
+                    }
+                ]
+            },
+            python: {
+                title: "Python",
+                logo: "images/skills/Python Logo.png",
+                description: "Strong programming skills in Python for data analysis, automation, and engineering calculations. Experience with libraries including pandas, numpy, matplotlib, and scipy for process optimization and quality analysis.",
+                projects: [
+                    {
+                        image: "images/skills/python/project1.png",
+                        caption: "Thermal Data Analysis - Paint Line Optimization"
+                    },
+                    {
+                        image: "images/skills/python/project2.png",
+                        caption: "Quality Data Visualization and Trending"
+                    },
+                    {
+                        image: "images/skills/python/project3.png",
+                        caption: "Process Automation Scripts"
+                    }
+                ]
+            },
+            autocad: {
+                title: "AutoCAD",
+                logo: "images/skills/AutoCAD Logo.png",
+                description: "Experienced in creating precise technical drawings and 2D layouts using AutoCAD. Applied for manufacturing documentation, facility layouts, and process flow diagrams.",
+                projects: [
+                    {
+                        image: "images/skills/autocad/project1.png",
+                        caption: "Manufacturing Floor Layout Design"
+                    },
+                    {
+                        image: "images/skills/autocad/project2.png",
+                        caption: "Process Equipment Drawings"
+                    },
+                    {
+                        image: "images/skills/autocad/project3.png",
+                        caption: "Technical Specification Sheets"
+                    }
+                ]
+            },
+            aspen: {
+                title: "Aspen Plus",
+                logo: "images/skills/Aspen Logo.jpg",
+                description: "Skilled in chemical process simulation using Aspen Plus. Experience modeling unit operations, performing material and energy balances, and optimizing process conditions for chemical engineering applications.",
+                projects: [
+                    {
+                        image: "images/skills/aspen/project1.png",
+                        caption: "Distillation Column Design and Optimization"
+                    },
+                    {
+                        image: "images/skills/aspen/project2.png",
+                        caption: "Heat Exchanger Network Analysis"
+                    },
+                    {
+                        image: "images/skills/aspen/project3.png",
+                        caption: "Process Flow Diagram Simulation"
+                    }
+                ]
+            }
+        };
+
         // Project data for modals
         const projectData = {
             1: {
@@ -1578,7 +2006,52 @@
             navLinks.classList.toggle('active');
         }
 
-        // Modal functions
+        // Carousel functions
+        function scrollCarousel(direction) {
+            const carousel = document.getElementById('skillsCarousel');
+            const scrollAmount = 270; // Card width + gap
+            carousel.scrollBy({
+                left: direction * scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+
+        // Skills modal functions
+        function openSkillsModal(skillId) {
+            const skill = skillsData[skillId];
+            if (!skill) return;
+
+            document.getElementById('skillsModalTitleText').textContent = skill.title;
+            
+            const logoContainer = document.getElementById('skillsModalLogo');
+            logoContainer.innerHTML = `<img src="${skill.logo}" alt="${skill.title}">`;
+            
+            document.getElementById('skillsDescription').textContent = skill.description;
+            
+            const collageContainer = document.getElementById('skillsCollage');
+            collageContainer.innerHTML = skill.projects.map(project => `
+                <div class="collage-item">
+                    <img src="${project.image}" alt="${project.caption}" class="collage-image">
+                    <div class="collage-caption">${project.caption}</div>
+                </div>
+            `).join('');
+
+            const modal = document.getElementById('skillsModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSkillsModal(event) {
+            if (event && event.target.classList.contains('skills-modal-content')) {
+                return;
+            }
+            
+            const modal = document.getElementById('skillsModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Project modal functions
         function openModal(projectId) {
             const project = projectData[projectId];
             if (!project) return;
@@ -1606,7 +2079,6 @@
         }
 
         function closeModal(event) {
-            // If event exists and target is not the overlay, don't close
             if (event && event.target.classList.contains('modal-content')) {
                 return;
             }
@@ -1616,10 +2088,11 @@
             document.body.style.overflow = '';
         }
 
-        // Close modal with ESC key
+        // Close modals with ESC key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closeModal();
+                closeSkillsModal();
             }
         });
 
@@ -1647,7 +2120,6 @@
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry, index) => {
                     if (entry.isIntersecting) {
-                        // Stagger the animation
                         setTimeout(() => {
                             entry.target.classList.add('revealed');
                         }, index * 100);
